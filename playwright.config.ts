@@ -1,9 +1,12 @@
 import { defineConfig } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Загружает переменные из .env
 
 export default defineConfig({
   testDir: './tests',
   use: {
-    baseURL: 'https://your.qa.api.com',
+    baseURL: process.env.BASE_URL,
     extraHTTPHeaders: {
       'Content-Type': 'application/json',
     },
